@@ -17,7 +17,6 @@ deploy_branch  = "gh-pages"
 ## -- Misc Configs, you probably have no reason to changes these -- ##
 
 public_dir   = "public/writes"    # compiled site directory
-preview_dir  = "/writes"   # preview server directory
 source_dir   = "source"    # source file directory
 deploy_dir   = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir    = "_stash"    # directory to stash posts for speedy generation
@@ -57,7 +56,7 @@ end
 
 desc "preview the site in a web browser"
 task :preview do
-  system "trap 'kill $jekyllPid $compassPid' Exit; jekyll --auto --server --base-url #{preview_dir} & jekyllPid=$!; compass watch & compassPid=$!; wait"
+  system "trap 'kill $jekyllPid $compassPid' Exit; jekyll --auto --server & jekyllPid=$!; compass watch & compassPid=$!; wait"
 end
 
 # usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
