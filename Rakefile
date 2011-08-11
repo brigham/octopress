@@ -7,8 +7,8 @@ custom_index = false
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
-ssh_user       = "user@domain.com"
-document_root  = "~/website.com/"
+ssh_user       = "brighamb_brighdotam@ssh.phx.nearlyfreespeech.net"
+document_root  = "/home/public/writes/"
 deploy_default = "rsync"
 
 # This will be configured for you when you run config_deploy
@@ -16,7 +16,8 @@ deploy_branch  = "gh-pages"
 
 ## -- Misc Configs, you probably have no reason to changes these -- ##
 
-public_dir   = "public"    # compiled site directory
+public_dir   = "public/writes"    # compiled site directory
+preview_dir  = "/writes"   # preview server directory
 source_dir   = "source"    # source file directory
 deploy_dir   = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir    = "_stash"    # directory to stash posts for speedy generation
@@ -56,7 +57,7 @@ end
 
 desc "preview the site in a web browser"
 task :preview do
-  system "trap 'kill $jekyllPid $compassPid' Exit; jekyll --auto --server & jekyllPid=$!; compass watch & compassPid=$!; wait"
+  system "trap 'kill $jekyllPid $compassPid' Exit; jekyll --auto --server --base-url #{preview_dir} & jekyllPid=$!; compass watch & compassPid=$!; wait"
 end
 
 # usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
