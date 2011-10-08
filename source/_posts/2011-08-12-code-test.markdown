@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Code Test"
+date: 2011-08-12 09:57
+comments: true
+published: false
+categories: 
+- Code
+---
+
+``` c
+    int a = 0;
+    a = a + 1;
+    return a;
+```
